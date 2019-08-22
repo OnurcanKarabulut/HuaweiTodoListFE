@@ -16,6 +16,7 @@ class Login extends Component {
 
     handleClick = (event) => {
         var apiBaseUrl = "http://localhost:8080/user/";
+        var apiBaseUrlTodo = "http://localhost:8080/todo/";
         var self = this;
         var payload = {
             "userId": this.state.username,
@@ -30,7 +31,7 @@ class Login extends Component {
                 if (response.data == true) {
                     console.log("Login successfull");
                     setUser(username);
-                    axios.get(apiBaseUrl + 'findtodolists' +'/' + username)
+                    axios.get(apiBaseUrlTodo + 'findtodolists' +'/' + username)
                         .then(function (response) {
                             setUserLists(response.data)
                         })

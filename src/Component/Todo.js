@@ -5,6 +5,8 @@ import Checkbox from '@material-ui/core/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Card from 'material-ui/Card';
+import AppBar from "material-ui/AppBar";
+
 
 
 class todo extends Component {
@@ -22,7 +24,7 @@ class todo extends Component {
     onChange = date => this.setState({date});
 
     handleClick(event) {
-        var apiBaseUrl = "http://localhost:8080/user/";
+        var apiBaseUrl = "http://localhost:8080/todo/";
         var self = this;
         console.log(this.props.TodoUsername);
         const {history} = this.props;
@@ -37,16 +39,10 @@ class todo extends Component {
         axios.post(apiBaseUrl + 'addtodo', payload)
             .then(function (response) {
                 console.log(response);
-                if (response.data == true) {
+                if (response.status == 200) {
                     console.log("kaydedildi");
                 history.push('main');
 
-                } else if (response.data == false) {
-                    console.log("kaydedilmedi");
-                    alert("kaydedilmedi")
-                } else {
-                    console.log("Username does not exists");
-                    alert("Username does not exist");
                 }
             })
             .catch(function (error) {
@@ -59,6 +55,9 @@ class todo extends Component {
         return (
             <div>
                 <MuiThemeProvider>
+                    <AppBar
+                        title={"Add Todo Items"}
+                    />
                     <Card style={cardStyle}>
                         <label>Name:
                             <TextField

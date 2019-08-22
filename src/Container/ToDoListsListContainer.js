@@ -7,6 +7,7 @@ import * as TodoListAction from "../Action/TodoListAction";
 const mapStateToProps = (state, ownProps) => {
     return {
         todolists: state.TodoLists.todolists,
+        username : state.Login.username,
     };
 };
 

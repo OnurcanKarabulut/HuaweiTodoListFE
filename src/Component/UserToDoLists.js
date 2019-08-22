@@ -6,6 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Card from 'material-ui/Card';
 import {reset} from 'redux-form';
+import AppBar from "material-ui/AppBar";
 
 
 
@@ -20,7 +21,7 @@ class usertodolists extends Component {
 
 
     handleClick(event) {
-        var apiBaseUrl = "http://localhost:8080/user/";
+        var apiBaseUrl = "http://localhost:8080/todo/";
         var self = this;
         console.log(this.props.username);
         var payload = {
@@ -55,6 +56,9 @@ class usertodolists extends Component {
         return (
             <div>
                 <MuiThemeProvider>
+                    <AppBar
+                        title={ "Create or List ToDoList's"}
+                    />
                     <Card style={cardStyle}>
                         <label>Name:
                             <TextField

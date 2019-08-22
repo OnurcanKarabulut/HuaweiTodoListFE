@@ -3,6 +3,7 @@ import axios from 'axios';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import RaisedButton from 'material-ui/RaisedButton';
+import AppBar from "material-ui/AppBar";
 
 
 class Main extends Component {
@@ -17,7 +18,7 @@ class Main extends Component {
     }
 
     listItem(event) {
-        var apiBaseUrl = "http://localhost:8080/user/";
+        var apiBaseUrl = "http://localhost:8080/todo/";
         var self = this;
         const {listname} = this.props;
         const {setToDoItems} = this.props;
@@ -34,6 +35,9 @@ class Main extends Component {
         return (
             <div>
                 <MuiThemeProvider>
+                    <AppBar
+                        title={this.props.listname + "ToDoItem's"}
+                    />
                     <div>
                         <RaisedButton label="Add todoItem" primary={true} style={style}
                                       onClick={(event) => this.addItem(event)}/>

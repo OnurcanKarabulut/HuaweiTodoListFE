@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import ToDoİtems from '../Component/TodoItems';
-import {Input} from 'mdbreact';
+import Input from '@material-ui/core/Input';
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+import AppBar from "material-ui/AppBar";
+
 class Todolist extends Component {
     state = {
         search : ""
@@ -18,7 +21,11 @@ class Todolist extends Component {
 
         return (
             <div>
-                <Input label="Search TodoItem" icon="search" onChange={this.onchange}/>
+                <MuiThemeProvider>
+                    <AppBar
+                        title={"Your ToDoItem's"}
+                    />
+                <Input placeholder="Search ToDoItem's" onChange={this.onchange}/>
                 {
 
                     filteredItems.map(item => {
@@ -35,6 +42,7 @@ class Todolist extends Component {
 
                     })
                 }
+                </MuiThemeProvider>
             </div>
 
         );

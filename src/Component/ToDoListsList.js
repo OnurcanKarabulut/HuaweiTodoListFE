@@ -5,6 +5,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Card from 'material-ui/Card';
+import AppBar from "material-ui/AppBar";
 
 
 class TodoListsList extends Component {
@@ -22,7 +23,7 @@ class TodoListsList extends Component {
     }
     onDeleteList  (id) {
         const {deleteList} = this.props;
-        var apiBaseUrl = "http://localhost:8080/user/";
+        var apiBaseUrl = "http://localhost:8080/todo/";
         var payload = {
            "id": this.props.id
         };
@@ -41,6 +42,7 @@ class TodoListsList extends Component {
         return (
             <div>
                 <MuiThemeProvider>
+
                     <Card style={cardStyle}>
                         <label>Name:
                             <TextField

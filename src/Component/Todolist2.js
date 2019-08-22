@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import Todolistslist  from '../Component/ToDoListsList';
+import AppBar from "material-ui/AppBar";
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 class Todolist2 extends Component {
     render() {
@@ -7,6 +9,10 @@ class Todolist2 extends Component {
 
         return (
             <div>
+                <MuiThemeProvider>
+                <AppBar
+                    title={"Your ToDoList's"}
+                />
                 {
                     todolists.map(item => {
                         return (
@@ -22,6 +28,7 @@ class Todolist2 extends Component {
 
                     })
                 }
+                </MuiThemeProvider>
             </div>
 
         );
