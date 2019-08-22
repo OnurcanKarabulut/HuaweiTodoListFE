@@ -21,31 +21,37 @@ class usertodolists extends Component {
 
 
     handleClick(event) {
-        var apiBaseUrl = "http://localhost:8080/todo/";
-        var self = this;
-        console.log(this.props.username);
-        var payload = {
-            "username": this.props.username,
-            "listname": this.state.listname,
+        if(this.state.listname.length===0){
+            alert("Liste İsmi doldurulmalıdır.!!")
+        }else {
+            var apiBaseUrl = "http://localhost:8080/todo/";
+            var self = this;
+            console.log(this.props.username);
+            var payload = {
+                "username": this.props.username,
+                "listname": this.state.listname,
 
-        };
-        const {username,history,setUserLists} = this.props
-        axios.post(apiBaseUrl + 'createList', payload)
-            .then(function (response) {
-                console.log(response);
-                if (response.status == 200) {
-                    console.log("kaydedildi");
-                    axios.get(apiBaseUrl + 'findtodolists' +'/' + username)
-                        .then(function (response) {
-                            setUserLists(response.data)
+            };
+            const {username, history, setUserLists} = this.props
+            axios.post(apiBaseUrl + 'createList', payload)
+                .then(function (response) {
+                    console.log(response);
+                    if (response.status == 200 && response.data == false) {
+                        console.log("kaydedildi");
+                        axios.get(apiBaseUrl + 'findtodolists' + '/' + username)
+                            .then(function (response) {
+                                setUserLists(response.data)
 
-                        })
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        this.setState({listname: ''})
+                            })
+                    }else{
+                        alert("Aynı isimle iki liste kaydedilemez!!");
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+            this.setState({listname: ''})
+        }
     }
     ListUserList(event) {
         this.props.history.push('todolists');

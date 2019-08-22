@@ -1,12 +1,10 @@
 import React, {Component} from 'react'
 import axios from 'axios';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Checkbox from '@material-ui/core/Checkbox';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Card from 'material-ui/Card';
 import AppBar from "material-ui/AppBar";
-
 
 
 class todo extends Component {
@@ -16,7 +14,8 @@ class todo extends Component {
             username: '',
             todo: '',
             cost: '',
-            date: new Date(),
+            date: '',
+            isChecked: false,
 
         }
     }
@@ -24,30 +23,37 @@ class todo extends Component {
     onChange = date => this.setState({date});
 
     handleClick(event) {
-        var apiBaseUrl = "http://localhost:8080/todo/";
-        var self = this;
-        console.log(this.props.TodoUsername);
-        const {history} = this.props;
-        var payload = {
-            "listname": this.props.TodoListname,
-            "todo": this.state.todo,
-            "cost": this.state.cost,
-            "date": this.state.date,
-            "username" : this.state.username,
+        if (this.state.todo.length === 0 || this.state.cost.length === 0 || this.state.date.length === 0) {
+            alert("Aşağıdaki Alanların Hepsinin Doldurulması Zorunludur!!!")
+        } else {
+            var apiBaseUrl = "http://localhost:8080/todo/";
+            var self = this;
+            console.log(this.props.TodoUsername);
+            const {history} = this.props;
+            var payload = {
+                "listname": this.props.TodoListname,
+                "todo": this.state.todo,
+                "cost": this.state.cost,
+                "date": this.state.date,
+                "username": this.state.username,
+                "checked": this.state.isChecked,
 
-        };
-        axios.post(apiBaseUrl + 'addtodo', payload)
-            .then(function (response) {
-                console.log(response);
-                if (response.status == 200) {
-                    console.log("kaydedildi");
-                history.push('main');
+            };
 
-                }
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+
+            axios.post(apiBaseUrl + 'addtodo', payload)
+                .then(function (response) {
+                    console.log(response);
+                    if (response.status == 200) {
+                        console.log("kaydedildi");
+                        history.push('main');
+
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
     }
 
     render() {
@@ -90,13 +96,13 @@ class todo extends Component {
                         </label>
                         <br></br>
                         <label>Completed:
-                            <Checkbox
-                                label="Multiline"
-                                value=''
-                                color="primary"
-                                inputProps={{
-                                    'aria-label': 'secondary checkbox',
-                                }}
+                            <label>Completed:
+                                <input type="checkbox" onChange={(e) => {
+                                    e.preventDefault();
+                                    this.setState({isChecked: !this.state.isChecked})
+                                }}/>
+                            </label>
+
                             />
                         </label>
                         <br/>

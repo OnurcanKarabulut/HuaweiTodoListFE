@@ -4,21 +4,23 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Card from 'material-ui/Card';
-import Checkbox from "@material-ui/core/Checkbox";
 import axios from "axios";
 
 
 class todoitems extends Component {
     constructor(props) {
         super(props);
+        console.log("odoitems", this.props)
         this.state = {
             username: '',
             todo: '',
             cost: '',
             date: '',
-
-        }
+            isChecked: this.props.isChecked,
+        };
+        this.handleChecked = this.handleChecked.bind(this);
     }
+
 
     onDeleteUser = (id) => {
         const {deleteuser} = this.props;
@@ -26,7 +28,7 @@ class todoitems extends Component {
         var payload = {
             "id": this.props.id
         };
-        axios.delete(apiBaseUrl + 'deleteToDoItem',{ data: payload })
+        axios.delete(apiBaseUrl + 'deleteToDoItem', {data: payload})
             .then(function (response) {
                 console.log(response);
                 if (response.status == 200) {
@@ -36,9 +38,29 @@ class todoitems extends Component {
             })
 
     };
+    handleChecked = (isChecked) => {
+        var apiBaseUrl = "http://localhost:8080/todo/";
+        var payload = {
+            "id": this.props.id,
+            "checked": isChecked,
+
+        };
+        var self = this
+        axios.post(apiBaseUrl + 'updateIsCompleted', payload)
+            .then(function (response) {
+                console.log("---response", response);
+                if (response.status == 200) {
+                    console.log("güncellendi");
+                    self.setState({isChecked: isChecked})
+                }
+            })
+
+    };
 
     render() {
+
         const {id, todo, cost, date} = this.props;
+
         console.log(date);
         return (
             <div>
@@ -62,26 +84,22 @@ class todoitems extends Component {
                         <br></br>
                         <label>Deadline:
                             <TextField
-                                id="datetime-local"
-                                label="Next appointment"
-                                type="datetime-local"
-
+                                id="date"
+                                label="Birthday"
+                                type="datetime"
+                                defaultValue="2017-05-25T00:00:00.000+0000"
                                 value={date}
                                 InputLabelProps={{
-                                    shrink: true,
+                                    shrink: true
                                 }}
                             />
                         </label>
                         <br></br>
                         <label>Completed:
-                            <Checkbox
-                                label="Multiline"
-                                value=''
-                                color="primary"
-                                inputProps={{
-                                    'aria-label': 'secondary checkbox',
-                                }}
-                            />
+                            <input type="checkbox" checked={this.state.isChecked} onChange={(e) => {
+                                e.preventDefault();
+                                this.handleChecked(!this.state.isChecked)
+                            }}/>
                         </label>
                         <br/>
                         <RaisedButton label="DELETE ITEM" primary={true} onClick={(event) => this.onDeleteUser(id)}/>

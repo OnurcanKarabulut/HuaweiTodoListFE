@@ -3,6 +3,7 @@ import ToDoİtems from '../Component/TodoItems';
 import Input from '@material-ui/core/Input';
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppBar from "material-ui/AppBar";
+import RaisedButton from "material-ui/RaisedButton";
 
 class Todolist extends Component {
     state = {
@@ -18,7 +19,6 @@ class Todolist extends Component {
         const filteredItems = todoitems.filter( item =>{
             return item.todo.toLowerCase().indexOf( search.toLowerCase() ) !== -1
         })
-
         return (
             <div>
                 <MuiThemeProvider>
@@ -37,6 +37,7 @@ class Todolist extends Component {
                                        todo={item.todo}
                                        cost={item.cost}
                                        date={item.date}
+                                       isChecked={item.isChecked}
                             />
                         )
 
