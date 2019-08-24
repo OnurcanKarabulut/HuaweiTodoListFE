@@ -36,15 +36,16 @@ class usertodolists extends Component {
             axios.post(apiBaseUrl + 'createList', payload)
                 .then(function (response) {
                     console.log(response);
-                    if (response.status == 200 && response.data == false) {
+                    if (response.data==true) {
+                        alert("Aynı isimle iki liste kaydedilemez!!");
+
+                    }else{
                         console.log("kaydedildi");
                         axios.get(apiBaseUrl + 'findtodolists' + '/' + username)
                             .then(function (response) {
                                 setUserLists(response.data)
 
                             })
-                    }else{
-                        alert("Aynı isimle iki liste kaydedilemez!!");
                     }
                 })
                 .catch(function (error) {

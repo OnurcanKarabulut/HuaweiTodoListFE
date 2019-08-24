@@ -13,7 +13,7 @@ class todo extends Component {
         this.state = {
             username: '',
             todo: '',
-            cost: '',
+            description: '',
             date: '',
             isChecked: false,
 
@@ -23,7 +23,7 @@ class todo extends Component {
     onChange = date => this.setState({date});
 
     handleClick(event) {
-        if (this.state.todo.length === 0 || this.state.cost.length === 0 || this.state.date.length === 0) {
+        if (this.state.todo.length === 0 || this.state.description.length === 0 || this.state.date.length === 0) {
             alert("Aşağıdaki Alanların Hepsinin Doldurulması Zorunludur!!!")
         } else {
             var apiBaseUrl = "http://localhost:8080/todo/";
@@ -33,7 +33,7 @@ class todo extends Component {
             var payload = {
                 "listname": this.props.TodoListname,
                 "todo": this.state.todo,
-                "cost": this.state.cost,
+                "description": this.state.description,
                 "date": this.state.date,
                 "username": this.state.username,
                 "checked": this.state.isChecked,
@@ -74,11 +74,11 @@ class todo extends Component {
                             />
                         </label>
                         <br></br>
-                        <label>Cost:
+                        <label>description:
                             <TextField
-                                hintText="cost"
-                                floatingLabelText="cost"
-                                onChange={(event, newValue) => this.setState({cost: newValue})}
+                                hintText="description"
+                                floatingLabelText="description"
+                                onChange={(event, newValue) => this.setState({description: newValue})}
                             />
                         </label>
                         <br></br>

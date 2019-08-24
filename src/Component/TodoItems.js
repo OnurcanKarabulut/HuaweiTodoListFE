@@ -14,7 +14,7 @@ class todoitems extends Component {
         this.state = {
             username: '',
             todo: '',
-            cost: '',
+            description: '',
             date: '',
             isChecked: this.props.isChecked,
         };
@@ -38,6 +38,7 @@ class todoitems extends Component {
             })
 
     };
+
     handleChecked = (isChecked) => {
         var apiBaseUrl = "http://localhost:8080/todo/";
         var payload = {
@@ -59,7 +60,7 @@ class todoitems extends Component {
 
     render() {
 
-        const {id, todo, cost, date} = this.props;
+        const {id, todo, description, date} = this.props;
 
         console.log(date);
         return (
@@ -74,11 +75,11 @@ class todoitems extends Component {
                             />
                         </label>
                         <br></br>
-                        <label>Cost:
+                        <label>description:
                             <TextField
-                                hintText="cost"
-                                floatingLabelText="cost"
-                                value={cost}
+                                hintText="description"
+                                floatingLabelText="description"
+                                value={description}
                             />
                         </label>
                         <br></br>

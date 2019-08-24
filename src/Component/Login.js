@@ -38,11 +38,11 @@ class Login extends Component {
                     history.push('usertodolists');
 
                 } else if (response.data == false) {
-                    console.log("Username password do not match");
-                    alert(response.data.success)
+                    console.log("Kullanıcı Adı veya şifre doğru değil");
+                    alert("Kullanıcı Adı veya şifre doğru değil")
                 } else {
-                    console.log("Username does not exists");
-                    alert("Username does not exist");
+                    console.log("Kullanıcı bulunamadı");
+                    alert("Kullanıcı bulunamadı");
                 }
             })
             .catch(function (error) {

@@ -10,6 +10,10 @@ class Todolist extends Component {
         search : ""
     }
 
+    back = () =>{
+        this.props.history.push("main");
+    };
+
     onchange = e =>{
         this.setState({ search : e.target.value });
     }
@@ -26,7 +30,9 @@ class Todolist extends Component {
                         title={"Your ToDoItem's"}
                     />
                 <Input placeholder="Search ToDoItem's" onChange={this.onchange}/>
-                {
+                <RaisedButton label="BACK TO ADD OR LIST ITEM" primary={true} onClick={(event) => this.back()}/>
+
+                    {
 
                     filteredItems.map(item => {
                         return (
@@ -35,7 +41,7 @@ class Todolist extends Component {
                                        id={item.id}
                                        key={item.id}
                                        todo={item.todo}
-                                       cost={item.cost}
+                                       description={item.description}
                                        date={item.date}
                                        isChecked={item.isChecked}
                             />
@@ -43,6 +49,7 @@ class Todolist extends Component {
 
                     })
                 }
+
                 </MuiThemeProvider>
             </div>
 
