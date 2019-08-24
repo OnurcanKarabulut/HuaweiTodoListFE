@@ -13,10 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        deleteList: value => {
-            dispatch(TodoListAction.deleteList(value));
-        }
-
+     
     };
 };
 

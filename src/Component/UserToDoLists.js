@@ -36,6 +36,7 @@ class usertodolists extends Component {
             axios.post(apiBaseUrl + 'createList', payload)
                 .then(function (response) {
                     console.log(response);
+
                     if (response.data==true) {
                         alert("Aynı isimle iki liste kaydedilemez!!");
 

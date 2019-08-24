@@ -37,7 +37,7 @@ class Todolist extends Component {
                     filteredItems.map(item => {
                         return (
 
-                            <ToDoİtems deleteuser={this.props.deleteUser}
+                            <ToDoİtems deleteuser={this.props.deleteTodoItem}
                                        id={item.id}
                                        key={item.id}
                                        todo={item.todo}

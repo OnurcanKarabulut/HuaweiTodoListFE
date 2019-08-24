@@ -13,7 +13,7 @@ const TodoItemsReducer = (state = initialState, action) => {
                 ...state,
                 comment: action.data,
             };
-        case ActionTypes.DELETE_USER:
+        case ActionTypes.DELETE_TODOITEM:
             return {
                 ...state,
                 id: action.data,
