@@ -40,7 +40,7 @@ class todoitems extends Component {
     };
 
     handleChecked = (isChecked) => {
-        var apiBaseUrl = "http://localhost:8080/todo/";
+        var apiBaseUrl = "https://huaweitodobe.herokuapp.com/todo/";
         var payload = {
             "id": this.props.id,
             "checked": isChecked,
