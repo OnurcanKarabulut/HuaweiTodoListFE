@@ -18,7 +18,7 @@ class Register extends Component {
     }
 
     handleClick(event) {
-        var apiBaseUrl = "http://localhost:8080/user/";
+        var apiBaseUrl = "https://huaweitodobe.herokuapp.com/user/";
         // console.log("values in register handler",role);
         var self = this;
         //To be done:check for empty values before hitting submit

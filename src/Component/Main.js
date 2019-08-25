@@ -18,7 +18,7 @@ class Main extends Component {
     }
 
     listItem(event) {
-        var apiBaseUrl = "http://localhost:8080/todo/";
+        var apiBaseUrl = "https://huaweitodobe.herokuapp.com/todo/";
         var self = this;
         const {listname} = this.props;
         const {setToDoItems} = this.props;

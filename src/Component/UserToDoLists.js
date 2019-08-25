@@ -24,7 +24,7 @@ class usertodolists extends Component {
         if(this.state.listname.length===0){
             alert("Liste İsmi doldurulmalıdır.!!")
         }else {
-            var apiBaseUrl = "http://localhost:8080/todo/";
+            var apiBaseUrl = "https://huaweitodobe.herokuapp.com/todo/";
             var self = this;
             console.log(this.props.username);
             var payload = {

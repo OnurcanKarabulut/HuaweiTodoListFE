@@ -24,7 +24,7 @@ class todoitems extends Component {
 
     onDeleteUser = (id) => {
         const {deleteuser} = this.props;
-        var apiBaseUrl = "http://localhost:8080/todo/";
+        var apiBaseUrl = "https://huaweitodobe.herokuapp.com/todo/";
         var payload = {
             "id": this.props.id
         };

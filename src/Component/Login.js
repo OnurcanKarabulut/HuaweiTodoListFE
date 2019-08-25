@@ -15,8 +15,8 @@ class Login extends Component {
     }
 
     handleClick = (event) => {
-        var apiBaseUrl = "http://localhost:8080/user/";
-        var apiBaseUrlTodo = "http://localhost:8080/todo/";
+        var apiBaseUrl = "https://huaweitodobe.herokuapp.com/user/";
+        var apiBaseUrlTodo = "https://huaweitodobe.herokuapp.com/todo/";
         var self = this;
         var payload = {
             "userId": this.state.username,

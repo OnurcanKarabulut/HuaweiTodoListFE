@@ -23,7 +23,7 @@ class TodoListsList extends Component {
     }
     onDeleteList  (id) {
         const {deleteList} = this.props;
-        var apiBaseUrl = "http://localhost:8080/todo/";
+        var apiBaseUrl = "https://huaweitodobe.herokuapp.com/todo/";
         var payload = {
            "id": this.props.id
         };

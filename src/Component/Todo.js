@@ -26,7 +26,7 @@ class todo extends Component {
         if (this.state.todo.length === 0 || this.state.description.length === 0 || this.state.date.length === 0) {
             alert("Aşağıdaki Alanların Hepsinin Doldurulması Zorunludur!!!")
         } else {
-            var apiBaseUrl = "http://localhost:8080/todo/";
+            var apiBaseUrl = "https://huaweitodobe.herokuapp.com/todo/";
             var self = this;
             console.log(this.props.TodoUsername);
             const {history} = this.props;
