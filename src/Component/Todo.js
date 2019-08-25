@@ -96,13 +96,10 @@ class todo extends Component {
                         </label>
                         <br></br>
                         <label>Completed:
-                            
                                 <input type="checkbox" onChange={(e) => {
                                     e.preventDefault();
                                     this.setState({isChecked: !this.state.isChecked})
                                 }}/>
-
-                            />
                         </label>
                         <br/>
 
